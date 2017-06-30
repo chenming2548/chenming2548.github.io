@@ -6,18 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017/6 | chenming的博客</title>
+  <title>使用Yaafe提取音频特征（MFCC、短时能量、短时过零率等特征） | chenming的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="java初学者">
+  <meta name="description" content="前段时间装了Yaafe库，今天就使用Yaafe来提取音频特征。如果没安装Yaafe，请参考我之前的文章。  Yaafe安装教程">
 <meta name="keywords" content="java">
-<meta property="og:type" content="website">
-<meta property="og:title" content="chenming的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2017/06/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Yaafe提取音频特征（MFCC、短时能量、短时过零率等特征）">
+<meta property="og:url" content="http://yoursite.com/2017/06/30/使用Yaafe提取音频特征（MFCC、短时能量、短时过零率等特征）/index.html">
 <meta property="og:site_name" content="chenming的博客">
-<meta property="og:description" content="java初学者">
+<meta property="og:description" content="前段时间装了Yaafe库，今天就使用Yaafe来提取音频特征。如果没安装Yaafe，请参考我之前的文章。  Yaafe安装教程">
+<meta property="og:image" content="http://img.blog.csdn.net/20160401154555109">
+<meta property="og:image" content="http://img.blog.csdn.net/20160401154522609">
+<meta property="og:updated_time" content="2017-06-30T08:19:05.360Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="chenming的博客">
-<meta name="twitter:description" content="java初学者">
+<meta name="twitter:title" content="使用Yaafe提取音频特征（MFCC、短时能量、短时过零率等特征）">
+<meta name="twitter:description" content="前段时间装了Yaafe库，今天就使用Yaafe来提取音频特征。如果没安装Yaafe，请参考我之前的文章。  Yaafe安装教程">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20160401154555109">
   
     <link rel="alternative" href="/atom.xml" title="chenming的博客" type="application/atom+xml">
   
@@ -157,211 +161,185 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-使用Yaafe提取音频特征（MFCC、短时能量、短时过零率等特征）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      使用Yaafe提取音频特征（MFCC、短时能量、短时过零率等特征）
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/30/使用Yaafe提取音频特征（MFCC、短时能量、短时过零率等特征）/" class="archive-article-date">
+
+        
+        <a href="/2017/06/30/使用Yaafe提取音频特征（MFCC、短时能量、短时过零率等特征）/" class="archive-article-date">
   	<time datetime="2017-06-30T08:12:38.906Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-30</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/30/使用Yaafe提取音频特征（MFCC、短时能量、短时过零率等特征）/">使用Yaafe提取音频特征（MFCC、短时能量、短时过零率等特征）</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前段时间装了Yaafe库，今天就使用Yaafe来提取音频特征。如果没安装Yaafe，请参考我之前的文章。</p>
+<blockquote>
+<p><a href="http://blog.csdn.net/chen0ming123/article/details/50929841" target="_blank" rel="external">Yaafe安装教程</a></p>
+</blockquote>
+<a id="more"></a>
+<p>[TOC]</p>
+<hr>
+<h2 id="一、音频信号预处理"><a href="#一、音频信号预处理" class="headerlink" title="一、音频信号预处理"></a>一、音频信号预处理</h2><p>###（1）设置音频信号采样率</p>
+<pre><code>在对音乐进行特征提取前，必须对音乐文件进行预处理，所有的歌曲必须是同一格式MP3，这样能够减小特征处理时出现的误差。此外，必须设置采样率，采样率是指录音设备在单位时间内对声音信号的采样次数。当今的主流采样率分为三个等级：22.05KHz、44.1KHz、48KHz。而在三个等级中，44.1KHz理论上是CD音质的界限，也就是MP3所具有的采样率。
+</code></pre><p>###（2）音频信号分帧（设置帧长和帧移）</p>
+<pre><code>采样率设置完毕后需要对音乐信号进行分帧处理。音乐信号可以看做是一段连续的曲线，使用无限分割的办法，可将一小段音乐信号看做是短时平稳的，这样每一小段的音乐信号成为分析帧。为了在处理帧于帧之间的信息时，能够让帧于帧之间的信息平滑过渡，我们可以给帧设定一个步长，即帧移，帧移不超过帧的二分之一，它是帧于帧之间未重叠的部分。设置不同的帧和帧移，对于最后研究的结果会造成很大的偏移，因此选择合适的帧和帧移也是一个不可忽略的关键点。
+</code></pre><p><img src="http://img.blog.csdn.net/20160401154555109" alt="这里写图片描述"></p>
+<p>###（3）音频信号加窗</p>
+<pre><code>在处理某些音乐文件时，需要进行快速的傅里叶变化，因为傅立叶变换对应的是无限信号,信号经过分帧后变成有限信号,分帧的信号再进行傅立叶变换后,高频部分将有&quot;泄露&quot;,所以要加窗。常见的加窗处理包括汉宁窗（Hanning）、汉明窗（Hamming）、矩形窗（Square）、三角窗（Triangle）。加窗的目的是为了减少频谱能量泄露，因为在帧需要进行周期延拓处理，得到虚拟无限长的信号，才可以对信号进行快速傅里叶变换等相关处理，可是无限长的信号被截断，其频谱会发生畸形，集中的能量会被分散到两个较宽的频带去。
+</code></pre><h2 id="二、音乐特征介绍"><a href="#二、音乐特征介绍" class="headerlink" title="二、音乐特征介绍"></a>二、音乐特征介绍</h2><blockquote>
+<p>在进行特征提取前简单介绍下音频特征。</p>
+</blockquote>
+<p>###（1）Mel倒频谱系数<br>        基于Mel倒谱系数（MFCC）是在Mel标度频率域中提取出来的倒频谱系数，是一种感知频域倒谱系数。MFCC以人耳的听觉系统为基础，利用Mel尺度三角滤波器组对傅里叶变换能量系数滤波器得到，并且可以对其频域进行Mel变化，因此Mel频率尺度是最符合人耳听觉系统的一种系数。</p>
+<p>###（2）线性预测编码</p>
+<pre><code>线性预测编码（linear predictive coding，LPC）是一种很重要的编码方法，线性预测的基本思路是：由于语言信号样点之间有相关性，所以可以用过去的样本点来预测现在或未来的样本点，即一个语音的抽样能够用过去若干个语音抽样的线性组合来逼近，通过使实际语音信号抽样值和线性预测抽样值之间的误差在均方准则下达到最小值来求解预测系数，而这预测系数就反映了语音信号的特征，故可以用这组语音特征参数进行语音识别或语音合成等。
+</code></pre><p>###（3）短时能量<br>        短时能量是音频分析中常用的特征之一。音频信号的短时能量随时间变化相对比较明显，可以用来区分清音和浊音。短时能量还可以用来识别静音帧，我们可以给定一个阀值，使得当短时能量的值小于这个阀值时，就认为这个帧是静音帧。我们通常可以把静音帧看作是一段音乐的开始或者是结尾，还可以是音乐的过渡。</p>
+<blockquote>
+<p>好了，其他特征不说了，再说下去我要把度娘搬上来了</p>
+</blockquote>
+<p>##三、音频特征提取</p>
+<blockquote>
+<p>官方文档：<a href="http://yaafe.sourceforge.net/manual/pythonbindings.html" target="_blank" rel="external">http://yaafe.sourceforge.net/manual/pythonbindings.html</a></p>
+</blockquote>
+<p>看例子：以下就是一个提取Mfcc平均值、方差的例子<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/python</div><div class="line"># -*- coding:utf-8 -*-</div><div class="line"></div><div class="line">from yaafelib import FeaturePlan, Engine, AudioFileProcessor</div><div class="line"></div><div class="line">def init():</div><div class="line">    global engine</div><div class="line">    fp = FeaturePlan(sample_rate=44100, resample=True, time_start=20,time_limit=40)           # 采样率44.1Hkz，提取20 - 40s</div><div class="line">    </div><div class="line">    fp.addFeature(&apos;mfcc: MFCC&apos;)        # 添加MFCC</div><div class="line">    fp.addFeature(&quot;energy: Energy&quot;)    # 能量</div><div class="line">    fp.addFeature(&quot;zcr: ZCR&quot;)          # 过零率</div><div class="line">    </div><div class="line">    df = fp.getDataFlow()</div><div class="line">    engine = Engine()                  # 配置Engine</div><div class="line">    engine.load(df)</div><div class="line"></div><div class="line">    return &apos;Yaafe初始化&apos;</div><div class="line"></div><div class="line">def startEngine(path):</div><div class="line">    global afp, features</div><div class="line">    afp = AudioFileProcessor()</div><div class="line">    afp.processFile(engine,path)       # 从mp3文件中提取特征，它必需提供engine配置</div><div class="line">    </div><div class="line">    features = engine.readAllOutputs() # 得到所有特征矩阵</div><div class="line"></div><div class="line">    return &apos;Yaafe提取成功&apos;</div><div class="line"></div><div class="line">#特征MFCC提取</div><div class="line">def getMFCC():</div><div class="line">    mfcc = features.get(&apos;mfcc&apos;)</div><div class="line"></div><div class="line">    mfccMean=mfcc.mean(axis=0)       # 平均值</div><div class="line">    mfccMean=mfccMean.reshape(-1,)</div><div class="line"></div><div class="line"></div><div class="line">    mfccVar=mfcc.var(axis=0)         # 方差</div><div class="line">    mfccVar=mfccVar.reshape(-1,)</div><div class="line"></div><div class="line">    return mfccMean, mfccVar</div><div class="line"></div><div class="line"></div><div class="line">#测试</div><div class="line">def main():</div><div class="line">    init()</div><div class="line">    startEngine(&apos;/home/chenming/Music/test.mp3&apos;)</div><div class="line">    print getMFCC()</div><div class="line"></div><div class="line"></div><div class="line">if __name__ == &apos;__main__&apos;:</div><div class="line">    main()</div></pre></td></tr></table></figure></p>
+<p>结果：<br><img src="http://img.blog.csdn.net/20160401154522609" alt="这里写图片描述"></p>
+<p><strong>FeaturePlan：</strong></p>
+<blockquote>
+<p>FeaturePlan 是一个按照给定的采样率提取的特征集合<br><strong>addFeature(definition)：</strong><br>Add a feature defined according the feature definition syntax.<br>Parameters:    definition (string) – feature definition.<br>Return type:    True on success, False on fail.</p>
+</blockquote>
+<p><strong>DataFlow：</strong></p>
+<blockquote>
+<p>DataFlow对象持有一个描述如何计算一些音频特征的步骤的有向无环图</p>
+</blockquote>
+<p><strong>Engine：</strong></p>
+<blockquote>
+<p>Engine对象计算配置给定的特征所需的费用<br><strong>load(dataflow)：</strong><br>Configure engine according to the given dataflow.<br>Parameters:    dataflow (DataFlow or string) – dataflow object or filename of a dataflow file.<br>Returns:    True on success, False on fail.</p>
+</blockquote>
+<p><strong>AudioFileProcessor：</strong></p>
+<blockquote>
+<p>AudioFileProcessor对象允许从音频文件中提取特征，并可能将输出特征写入文件，必须给它提供一个Engine<br><strong>processFile(engine, filename)：</strong><br>Extract features from the given file using the given engine.<br>If an output format has been set, then output files will be written, else output feature data can be read using engine’s Engine.readOutput() or Engine.readAllOutputs() methods.<br>Parameters:<br>engine (Engine) – engine to use for feature extraction. It must already have been configured.<br>filename (string) – audio file to process<br>Returns:<br>0 on success, negative value on fail</p>
+</blockquote>
+<p>短时能量和过零率就不写上去了，步骤一样features.get(‘zrc’)就好了。</p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/06/30/使用Yaafe提取音频特征（MFCC、短时能量、短时过零率等特征）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/30/使用scikit-learn进行音乐分类/" class="archive-article-date">
-  	<time datetime="2017-06-30T08:12:14.686Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-30</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/30/使用scikit-learn进行音乐分类/">使用scikit-learn进行音乐分类</a>
-    </h1>
+  
+    <a href="/2017/06/30/使用scikit-learn进行音乐分类/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">使用scikit-learn进行音乐分类</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/30/Ubuntu下Yaafe安装及配置/" class="archive-article-date">
-  	<time datetime="2017-06-30T08:11:47.199Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/30/Ubuntu下Yaafe安装及配置/">Ubuntu下Yaafe安装及配置</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/30/Ubuntu下Essentia安装及配置/" class="archive-article-date">
-  	<time datetime="2017-06-30T08:10:32.439Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/30/Ubuntu下Essentia安装及配置/">Ubuntu下Essentia安装及配置</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/30/Hadoop1.2.1 伪分布式配置/" class="archive-article-date">
-  	<time datetime="2017-06-30T08:09:11.959Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/30/Hadoop1.2.1 伪分布式配置/">Hadoop1.2.1 伪分布式配置</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/30/责任链模式及其在web容器中的应用/" class="archive-article-date">
-  	<time datetime="2017-06-30T07:37:52.523Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/30/责任链模式及其在web容器中的应用/">责任链模式及其在web容器中的应用</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/30/hello-world/" class="archive-article-date">
-  	<time datetime="2017-06-30T05:32:17.199Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/30/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -384,8 +362,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

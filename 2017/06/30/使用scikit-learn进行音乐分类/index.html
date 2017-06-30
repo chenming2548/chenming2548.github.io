@@ -6,18 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017/6 | chenming的博客</title>
+  <title>使用scikit-learn进行音乐分类 | chenming的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="java初学者">
+  <meta name="description" content="之前简要说了下Yaafe和Essentia的安装使用，自己也专门对这两个框架做了封装，实现了各个特征提取的接口，并将特征值存到本地文件中方便训练时使用。下面这张图是对应提取的特征数据，一共35种特征，每种特征维度不一样。例如MFCC最大值维度为13维。   这里的音乐分类主要是按情感进行分类，一共分成7种情感：happy，sad，passion，excited，quiet，nostalgic，r">
 <meta name="keywords" content="java">
-<meta property="og:type" content="website">
-<meta property="og:title" content="chenming的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2017/06/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用scikit-learn进行音乐分类">
+<meta property="og:url" content="http://yoursite.com/2017/06/30/使用scikit-learn进行音乐分类/index.html">
 <meta property="og:site_name" content="chenming的博客">
-<meta property="og:description" content="java初学者">
+<meta property="og:description" content="之前简要说了下Yaafe和Essentia的安装使用，自己也专门对这两个框架做了封装，实现了各个特征提取的接口，并将特征值存到本地文件中方便训练时使用。下面这张图是对应提取的特征数据，一共35种特征，每种特征维度不一样。例如MFCC最大值维度为13维。   这里的音乐分类主要是按情感进行分类，一共分成7种情感：happy，sad，passion，excited，quiet，nostalgic，r">
+<meta property="og:image" content="http://img.blog.csdn.net/20160629173502862">
+<meta property="og:image" content="http://img.blog.csdn.net/20160629180307509">
+<meta property="og:image" content="http://img.blog.csdn.net/20160629195637721">
+<meta property="og:updated_time" content="2017-06-30T08:19:00.844Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="chenming的博客">
-<meta name="twitter:description" content="java初学者">
+<meta name="twitter:title" content="使用scikit-learn进行音乐分类">
+<meta name="twitter:description" content="之前简要说了下Yaafe和Essentia的安装使用，自己也专门对这两个框架做了封装，实现了各个特征提取的接口，并将特征值存到本地文件中方便训练时使用。下面这张图是对应提取的特征数据，一共35种特征，每种特征维度不一样。例如MFCC最大值维度为13维。   这里的音乐分类主要是按情感进行分类，一共分成7种情感：happy，sad，passion，excited，quiet，nostalgic，r">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20160629173502862">
   
     <link rel="alternative" href="/atom.xml" title="chenming的博客" type="application/atom+xml">
   
@@ -157,211 +162,163 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-使用scikit-learn进行音乐分类" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/30/使用Yaafe提取音频特征（MFCC、短时能量、短时过零率等特征）/" class="archive-article-date">
-  	<time datetime="2017-06-30T08:12:38.906Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-30</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/30/使用Yaafe提取音频特征（MFCC、短时能量、短时过零率等特征）/">使用Yaafe提取音频特征（MFCC、短时能量、短时过零率等特征）</a>
+    <h1 class="article-title" itemprop="name">
+      使用scikit-learn进行音乐分类
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/30/使用scikit-learn进行音乐分类/" class="archive-article-date">
+        
+        <a href="/2017/06/30/使用scikit-learn进行音乐分类/" class="archive-article-date">
   	<time datetime="2017-06-30T08:12:14.686Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-30</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/30/使用scikit-learn进行音乐分类/">使用scikit-learn进行音乐分类</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>之前简要说了下Yaafe和Essentia的安装使用，自己也专门对这两个框架做了封装，实现了各个特征提取的接口，并将特征值存到本地文件中方便训练时使用。下面这张图是对应提取的特征数据，一共35种特征，每种特征维度不一样。例如MFCC最大值维度为13维。</p>
+</blockquote>
+<p><img src="http://img.blog.csdn.net/20160629173502862" alt="这里写图片描述"></p>
+<p>这里的音乐分类主要是按情感进行分类，一共分成7种情感：happy，sad，passion，excited，quiet，nostalgic，relax。</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><h2 id="一、得到训练数据"><a href="#一、得到训练数据" class="headerlink" title="一、得到训练数据"></a>一、得到训练数据</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">def getTrainData(train_path, train_mode, mode_name, featureList):</div><div class="line">    num = []</div><div class="line">    train_data = []</div><div class="line">    train_target = []</div><div class="line">    introFeature = []</div><div class="line"></div><div class="line">    for i in range(len(train_mode)):</div><div class="line">        allFeature = []</div><div class="line">        # print len(train_mode),len(train_path),i,train_path[0],train_path[1]</div><div class="line">        # print tool.getFileNum(train_path[i])</div><div class="line">        num.append(tool.getFileNum(train_path[i]))</div><div class="line">        for j in tool.getAllFile(train_path[i]):</div><div class="line">            yl.startEngine(j)</div><div class="line">            el.startLoader(j)</div><div class="line">            oneFeature, introFeature = getFeature(yl, el, featureList)</div><div class="line"></div><div class="line">            allFeature.append(oneFeature)</div><div class="line">        # print allFeature</div><div class="line"></div><div class="line">        # 判断是否有歌曲的特征被提取出</div><div class="line">        if len(allFeature) == 0:</div><div class="line">            print &apos;无音频文件&apos;</div><div class="line">        else:</div><div class="line">            wf.setMode(train_mode[i])  # 设置类别和目录．输出</div><div class="line">            wf.setFeaturePrintPath(train_path[i])  # 音乐目录/feature_num/train_mode[i].txt  readme.txt</div><div class="line">            wf.writeFeature(allFeature, introFeature)</div><div class="line">            tool.mkdir(&apos;dataSystem/&apos; + mode_name)</div><div class="line">            wf.writeDetial(&apos;dataSystem/&apos; + mode_name + &apos;/feature.txt&apos;, featureList)</div><div class="line">        for singleFeature in allFeature:</div><div class="line">            train_data.append(singleFeature)  # 设置训练数据</div><div class="line">            train_target.append(i)  # 设置训练目标</div><div class="line"></div><div class="line">    return train_data, train_target</div></pre></td></tr></table></figure>
+<blockquote>
+<p>train_path和train_mode分别表示传入的一类音乐文件夹路径，该类别标签，例如train_path=‘/home/chenming/Music/Happy’表示happy类型音乐文件夹，train_mode=‘happy’表示该组训练数据类型为happy。featureList是传入的需要提取的特征，例如featureList=[1,2,3]表示提取FEATURES中对应1,2,3位置的特征（上面第一张图片）。</p>
+<p>train_data = []和 train_target = []分别是得到的训练数据以及该数据对应的标签。最终特征数据存到/home/chenming/Music/Happy下feature_num/happy.txt中<br><img src="http://img.blog.csdn.net/20160629180307509" alt="这里写图片描述"></p>
+<h2 id="二、训练"><a href="#二、训练" class="headerlink" title="二、训练"></a>二、训练</h2></blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">def train(train_data, train_target, train_mode, mode_name):</div><div class="line">	# 数据标准化</div><div class="line">    train_data = np.array(train_data)</div><div class="line">    train_target = np.array(train_target)</div><div class="line"></div><div class="line">    # sklearn提供的数据处理方法</div><div class="line">    # train_data = preprocessing.scale(train_data)</div><div class="line">    # test_data = preprocessing.scale(test_data)</div><div class="line"></div><div class="line">    (meanData, stdData) = tool.trainDataStandardNor(train_data)</div><div class="line"></div><div class="line">    # 存储</div><div class="line">    np.savetxt(&apos;dataSystem/&apos; + mode_name + &apos;/meanData.txt&apos;, meanData)</div><div class="line">    np.savetxt(&apos;dataSystem/&apos; + mode_name + &apos;/stdData.txt&apos;, stdData)</div><div class="line">    wf.writeDetial(&apos;dataSystem/&apos; + mode_name + &apos;/modeList.txt&apos;, train_mode)</div><div class="line">    #np.savetxt(&apos;dataSystem/&apos; + mode_name + &apos;/modeList.txt&apos;, train_mode)</div><div class="line">    &apos;&apos;&apos;</div><div class="line">	c=np.arange(1,10,1)</div><div class="line">	g=np.arange(0,1,0.1)</div><div class="line">	tuned_parameters = [&#123;&apos;kernel&apos;: [&apos;rbf&apos;], &apos;gamma&apos;: g,&apos;C&apos;: c&#125;]</div><div class="line">	#print classifierType,type(classifierType)</div><div class="line">	&apos;&apos;&apos;</div><div class="line">    clf = svm.SVC()</div><div class="line">    if classifierType == &apos;svm&apos;:</div><div class="line">        clf = svm.SVC()</div><div class="line">    elif classifierType == &apos;knn&apos;:</div><div class="line">        clf = neighbors.KNeighborsClassifier()  # knn K-临近算法</div><div class="line">    elif classifierType == &apos;tree&apos;:</div><div class="line">        clf = tree.DecisionTreeClassifier()  # 决策树</div><div class="line"></div><div class="line">    # clf = grid_search.GridSearchCV(svm.SVC(), tuned_parameters, cv=3) #svm支持向量机</div><div class="line">    print train_data</div><div class="line">    print train_target</div><div class="line"></div><div class="line">    clf.fit(train_data, train_target)</div><div class="line">    # clf.fit(train_data)</div><div class="line">    # clf.score(test_data, test_target)</div><div class="line">    # showStyleDetail(test_data,test_target,clf)</div><div class="line">    from sklearn.externals import joblib</div><div class="line"></div><div class="line">    tool.mkdir(&apos;svcSystem/&apos; + mode_name)</div><div class="line">    joblib.dump(clf, &apos;svcSystem/&apos; + mode_name + &apos;/svc1.pkl&apos;)</div><div class="line">    # clf2=joblib.load(&apos;svc/svc1.pkl&apos;)</div><div class="line">    # print clf.score(test_data, test_target)</div><div class="line">    # showDetail(test_data,test_target,clf2)</div><div class="line">    # print clf.best_estimator_</div><div class="line"></div><div class="line">    return &apos;训练成功,模型&apos; + mode_name + &apos;存储成功,&apos;+&apos;位置:svcSystem/&apos;+mode_name +&apos;/svc1.pkl&apos;</div></pre></td></tr></table></figure>
+<p>(meanData, stdData) = tool.trainDataStandardNor(train_data)是对数据进行归一化处理，代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">def trainDataStandardNor(featureMatrix):</div><div class="line">	</div><div class="line">	#print &apos;train_feature&apos;,featureMatrix</div><div class="line">	meanData=featureMatrix.mean(axis=0) #平均值</div><div class="line">	stdData=featureMatrix.std(axis=0) #标准差</div><div class="line">	for data in featureMatrix:</div><div class="line">		for i in range(len(data)):</div><div class="line">			if stdData[i]==0:</div><div class="line">				data[i]=0</div><div class="line">			else:</div><div class="line">				print data[i]</div><div class="line">				data[i]=(data[i]-meanData[i])/stdData[i]</div><div class="line"></div><div class="line">	return (meanData,stdData)</div></pre></td></tr></table></figure></p>
+<p><a href="http://www.tuicool.com/articles/qeIzI3F" target="_blank" rel="external">http://www.tuicool.com/articles/qeIzI3F</a> 这篇博客介绍了Scikit-Learn的使用。</p>
+<h2 id="三、测试"><a href="#三、测试" class="headerlink" title="三、测试"></a>三、测试</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">def test(test_data, test_target, test_mode, mode_name):</div><div class="line">    test_data = np.array(test_data)</div><div class="line">    test_target = np.array(test_target)</div><div class="line"></div><div class="line">    print &apos;test_data:&apos;, test_data</div><div class="line">    print &apos;test_target:&apos;, test_target</div><div class="line">    print &apos;test_mode:&apos;, test_mode</div><div class="line"></div><div class="line">    path1 = &apos;dataSystem/&apos; + mode_name + &apos;/meanData.txt&apos;</div><div class="line">    path2 = &apos;dataSystem/&apos; + mode_name + &apos;/stdData.txt&apos;</div><div class="line">    path3 = &apos;svcSystem/&apos; + mode_name + &apos;/svc1.pkl&apos;</div><div class="line">    path4 = &apos;dataSystem/&apos; + mode_name + &apos;/modeList.txt&apos;</div><div class="line"></div><div class="line">    print &apos;数据路径:&apos; + &apos;dataSystem/&apos; + mode_name + &apos;和svcSystem/&apos; + mode_name</div><div class="line"></div><div class="line">    meanData = np.loadtxt(path1)</div><div class="line">    stdData = np.loadtxt(path2)</div><div class="line">    modeList = wf.readFileTxt(path4)</div><div class="line">    mode = wf.readFileTxt(&apos;dataSystem/&apos; + mode_name + &apos;/modeList.txt&apos;)</div><div class="line"></div><div class="line">    tool.testDataStandardNor(test_data, meanData, stdData)</div><div class="line"></div><div class="line">    from sklearn.externals import joblib</div><div class="line"></div><div class="line">    clf = joblib.load(path3)</div><div class="line"></div><div class="line">    s = showDetail(clf, test_data, test_target, modeList)</div><div class="line"></div><div class="line">    return s</div></pre></td></tr></table></figure>
+<p>showDetail函数展示结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">def showDetail(clf, test_data, test_target, mode):</div><div class="line">    modeNum = []</div><div class="line"></div><div class="line">    expected = test_target</div><div class="line">    predicted = clf.predict(test_data)</div><div class="line">    # print expected</div><div class="line">    # print predicted</div><div class="line">    # print test_mode</div><div class="line"></div><div class="line">    out = &apos;&apos;&apos;</div><div class="line">*******准确率=被识别为该分类的正确分类记录数/被识别为该分类的记录数</div><div class="line">*******召回率=被识别为该分类的正确分类记录数/测试集中该分类的记录总数</div><div class="line">*******F1-score=2（准确率 * 召回率）/（准确率 + 召回率），F1-score是F-measure（又称F-score）beta=1时的特例</div><div class="line">*******support=测试集中该分类的记录总数\n</div><div class="line">		&apos;&apos;&apos;</div><div class="line">    for d in mode:</div><div class="line">        print &apos;d&apos;, d</div><div class="line">    out = out + str(metrics.classification_report(expected, predicted, target_names=mode))</div><div class="line">    print (metrics.classification_report(expected, predicted, target_names=mode))</div><div class="line">    result = metrics.confusion_matrix(expected, predicted)</div><div class="line">    out = out + &apos;\n预测数目:\t&apos;</div><div class="line">    print  &apos;预测数目:\t&apos;,</div><div class="line">    for j in range(len(mode)):</div><div class="line">        out = out + str(mode[j]) + &apos;\t&apos;</div><div class="line">        print mode[j], &apos;\t&apos;,</div><div class="line">    out = out + &apos;\n\n&apos;</div><div class="line">    print &apos;\n&apos;</div><div class="line">    for i in range(len(result)):</div><div class="line">        out = out + &apos;测试数据&apos; + str(i + 1) + &apos;:\t&apos;</div><div class="line">        print &apos;测试数据&apos; + str(i + 1) + &apos;:\t&apos;,</div><div class="line">        num = 0</div><div class="line">        for p in range(len(result[i])):</div><div class="line">            out = out + str(result[i][p]) + &apos;\t&apos;</div><div class="line">            print result[i][p], &apos;\t&apos;,</div><div class="line">            num = num + result[i][p]</div><div class="line">        out = out + &apos;\n&apos;</div><div class="line">        print &apos;\n&apos;</div><div class="line">        modeNum.append([result[i][i], num])</div><div class="line">        out = out + &apos;\n&apos;</div><div class="line">    for k in range(len(modeNum)):</div><div class="line">        out = out + str(mode[k]) + &apos;:\t命中/总数:&apos; + str(modeNum[k][0]) + &apos;/&apos; + str(modeNum[k][1]) + &apos;\t正确率:&apos; + str(</div><div class="line">            tool.ratio(modeNum[k][0], modeNum[k][1])) + &apos;\n&apos;</div><div class="line">        print mode[k], &apos;:\t命中/总数:&apos;, modeNum[k][0], &apos;/&apos;, modeNum[k][1], &apos;\t正确率:&apos;, tool.ratio(modeNum[k][0],</div><div class="line">                                                                                            modeNum[k][1])</div><div class="line"></div><div class="line">    return out</div></pre></td></tr></table></figure></p>
+<p>以下是测试结果测试50首happy歌曲音乐，得到47首正确，3首识别错误:<br><img src="http://img.blog.csdn.net/20160629195637721" alt="这里写图片描述"></p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/06/30/使用scikit-learn进行音乐分类/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/30/Ubuntu下Yaafe安装及配置/" class="archive-article-date">
-  	<time datetime="2017-06-30T08:11:47.199Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-30</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/30/Ubuntu下Yaafe安装及配置/">Ubuntu下Yaafe安装及配置</a>
-    </h1>
+    <a href="/2017/06/30/使用Yaafe提取音频特征（MFCC、短时能量、短时过零率等特征）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          使用Yaafe提取音频特征（MFCC、短时能量、短时过零率等特征）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/06/30/Ubuntu下Yaafe安装及配置/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Ubuntu下Yaafe安装及配置</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/30/Ubuntu下Essentia安装及配置/" class="archive-article-date">
-  	<time datetime="2017-06-30T08:10:32.439Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/30/Ubuntu下Essentia安装及配置/">Ubuntu下Essentia安装及配置</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/30/Hadoop1.2.1 伪分布式配置/" class="archive-article-date">
-  	<time datetime="2017-06-30T08:09:11.959Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/30/Hadoop1.2.1 伪分布式配置/">Hadoop1.2.1 伪分布式配置</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/30/责任链模式及其在web容器中的应用/" class="archive-article-date">
-  	<time datetime="2017-06-30T07:37:52.523Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/30/责任链模式及其在web容器中的应用/">责任链模式及其在web容器中的应用</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/30/hello-world/" class="archive-article-date">
-  	<time datetime="2017-06-30T05:32:17.199Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/30/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -384,8 +341,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
